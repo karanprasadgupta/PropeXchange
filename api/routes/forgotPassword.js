@@ -30,29 +30,29 @@ export default (app) => {
           resetPasswordExpires: Date.now() + 3600000,
         });
         let testAccount = await nodemailer.createTestAccount();
-        // const transporter = nodemailer.createTransport({
-        //   service: 'gmail',
-        //   auth: {
-        //     user: `${process.env.EMAIL_ADDRESS}`,
-        //     pass: `${process.env.EMAIL_PASSWORD}`,
-        //   },
-        // });
         const transporter = nodemailer.createTransport({
-          host: 'smtp.ethereal.email',
-          port: 587,
+          service: 'gmail',
           auth: {
-              user: `${process.env.EMAIL_ADDRESS}`,
-              pass: `${process.env.EMAIL_PASSWORD}`,
-          }
-      });
+            user: `${process.env.EMAIL_ADDR}`,
+            pass: `${process.env.APP_PWD}`,
+          },
+        });
+      //   const transporter = nodemailer.createTransport({
+      //     host: 'smtp.ethereal.email',
+      //     port: 587,
+      //     auth: {
+      //         user: `${process.env.EMAIL_ADDRESS}`,
+      //         pass: `${process.env.EMAIL_PASSWORD}`,
+      //     }
+      // });
         const mailOptions = {
-          from: 'mySqlDemoEmail@gmail.com',
+          from: 'no-reply@propexchange.com',
           to: `${user.email}`,
           subject: 'Link To Reset Password',
           text:
             'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n'
             + 'Please click on the following link, or paste this into your browser to complete the process within one hour of receiving it:\n\n'
-            + `http://localhost:3000/reset/${token}\n\n`
+            + `${process.env.CLIENT_URL}/reset/${token}\n\n`
             + 'If you did not request this, please ignore this email and your password will remain unchanged.\n',
         };
 

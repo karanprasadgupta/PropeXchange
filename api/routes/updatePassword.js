@@ -2,7 +2,7 @@
 import passport from 'passport';
 import bcrypt from 'bcrypt';
 import {User} from '../sequelize.js';
-
+import { validatePassword } from '../utils/helperUtil.js';
 
 
 const BCRYPT_SALT_ROUNDS = 12;
@@ -11,6 +11,9 @@ export default (app) => {
     passport.authenticate('jwt', { session: false }, (err, user, info) => {
       if (err) {
         console.error(err);
+      }
+      if(!validatePassword(req.body.password)) {
+        res.status(401).send({ message: 'Invalid Password! Must contain atleast 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.' });
       }
       if (info !== undefined) {
         console.error(info.message);

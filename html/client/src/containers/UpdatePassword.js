@@ -88,8 +88,16 @@ class UpdatePassword extends Component {
       [name]: event.target.value,
     });
   };
-
+  validatePassword = (password) =>{
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  };
   updatePassword = async (e) => {
+    if(!this.validatePassword(this.state.password)) {
+      this.setState({password:''});
+      window.alert(`Invalid Password! Must contain atleast 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.`);
+      return;
+    }
     const accessString = localStorage.getItem('JWT');
     if (accessString === null) {
       this.setState({

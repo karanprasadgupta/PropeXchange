@@ -1,8 +1,8 @@
 const UserModel = (sequelize, type) => sequelize.define('User', {
     id: {
-      type: type.INTEGER,
+      type: type.UUID,
       primaryKey: true,
-      autoIncrement: true,
+      defaultValue: type.UUIDV4,
     },
     first_name: type.STRING,
     last_name: type.STRING,
@@ -22,6 +22,10 @@ const UserModel = (sequelize, type) => sequelize.define('User', {
     resetPasswordExpires: type.DATE,
     otpToken: type.STRING,
     otpExpires: type.DATE,
+    status: {
+      type: type.ENUM('blocked', 'verified', 'unverified'),
+      defaultValue: 'unverified',
+    },
   });
  
 export default UserModel;

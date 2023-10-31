@@ -79,7 +79,7 @@ class Login extends Component {
         }
         if (
           error.response.data === 'bad username'
-          || error.response.data === 'passwords do not match' || error.response.data === 'OTP does not match or expired'
+          || error.response.data === 'passwords do not match' || error.response.data === 'OTP does not match or expired' || error.response.data === 'Invalid username or password'
         ) {
           this.setState({
             errorMesssage: error.response.data,

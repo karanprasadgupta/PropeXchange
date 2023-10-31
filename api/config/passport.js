@@ -15,6 +15,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as JWTstrategy, ExtractJwt as ExtractJWT } from 'passport-jwt';
 import { User } from '../sequelize.js';
 
+import { validateUsername, validatePassword } from '../utils/helperUtil.js';
 
 passport.use(
   'register',
@@ -26,9 +27,9 @@ passport.use(
       session: false,
     },
     (req, username, password, done) => {
-      console.log(username);
-      console.log(req.body.email);
-
+      if(!validateUsername(username) || !validatePassword(password)){
+        return done(null, false, { message: 'Invalid username or password' });
+      }
       try {
         User.findOne({
           where: {
@@ -74,6 +75,9 @@ passport.use(
       session: false,
     },
     (req, username, password, done) => {
+      if(!validateUsername(username) || !validatePassword(password)){
+        return done(null, false, { message: 'Invalid username or password' });
+      }
       try {
         User.findOne({
           where: {
@@ -132,6 +136,7 @@ passport.use(
       User.findOne({
         where: {
           id: jwt_payload.id,
+          status: 'verified',
         },
       }).then(user => {
         if (user) {

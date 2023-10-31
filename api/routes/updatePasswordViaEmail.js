@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt';
 import Sequelize from 'sequelize';
 import {User} from '../sequelize.js';
-
+import {validatePassword} from '../utils/helperUtil.js';
 // eslint-disable-next-line prefer-destructuring
 const Op = Sequelize.Op;
 
@@ -10,6 +10,9 @@ const Op = Sequelize.Op;
 const BCRYPT_SALT_ROUNDS = 12;
 export default (app) => {
   app.put('/updatePasswordViaEmail', (req, res) => {
+    if(!validatePassword(req.body.password)) {
+      res.status(401).send({ message: 'Invalid Password! Must contain atleast 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.' });
+    }
     User.findOne({
       where: {
         username: req.body.username,

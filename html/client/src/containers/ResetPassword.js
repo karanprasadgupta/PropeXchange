@@ -73,7 +73,10 @@ class ResetPassword extends Component {
       });
     }
   }
-
+  validatePassword = (password) =>{
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  };
   handleChange = name => (event) => {
     this.setState({
       [name]: event.target.value,
@@ -81,6 +84,11 @@ class ResetPassword extends Component {
   };
 
   updatePassword = async (e) => {
+    if(!this.validatePassword(this.state.password)) {
+      this.setState({password:''});
+      window.alert(`Invalid Password! Must contain atleast 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.`);
+      return;
+    }
     e.preventDefault();
     const { username, password } = this.state;
     const {

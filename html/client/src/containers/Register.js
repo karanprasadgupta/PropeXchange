@@ -30,7 +30,14 @@ class Register extends Component {
       loginError: false,
     };
   }
-  
+  validateUsername = (username) => {
+    const regex = /^[a-z0-9]+$/;
+    return regex.test(username);
+  };
+  validatePassword = (password) =>{
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  };
   handleChange = name => (event) => {
     this.setState({
       [name]: event.target.value,
@@ -48,6 +55,12 @@ class Register extends Component {
         loginError: false,
         registerError: true,
       });
+    } else if(!this.validateUsername(username)) {
+      this.setState({username:''});
+      window.alert("Invalid UserName! Must contain only lowercase letters and numbers.");
+    } else if(!this.validatePassword(password)) {
+      this.setState({password:''});
+      window.alert(`Invalid Password! Must contain atleast 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.`);
     } else {
       try {
         const response = await axios.post(
@@ -74,6 +87,9 @@ class Register extends Component {
             loginError: true,
             registerError: false,
           });
+        }
+        if(error.response.data === 'Invalid username or password'){
+          window.alert("Invalid username or password!");
         }
       }
     }
