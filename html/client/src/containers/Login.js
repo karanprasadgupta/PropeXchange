@@ -87,6 +87,12 @@ class Login extends Component {
             showNullError: false,
           });
         }
+        if(error.response.data === 'user blocked'){
+          window.alert('User blocked. Please contact admin.');
+        }
+        if(error.response.data === 'user unverified'){
+          window.alert('User Not Verified. Please check your email to verify your profile.');
+        }
       }
     }
   };

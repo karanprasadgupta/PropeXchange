@@ -26,7 +26,7 @@ const Property=PropertyModel(sequelize,DataTypes);
 sequelize.sync().then(()=>{
   console.log("Property table has been created!!");
 });
-
+User.hasMany(Property,{foreignKey:'userId'});
 console.log("user",User);
 
 export { User, Property };

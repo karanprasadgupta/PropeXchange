@@ -1,5 +1,5 @@
 const UserModel = (sequelize, type) => sequelize.define('User', {
-    id: {
+    userId: {
       type: type.UUID,
       primaryKey: true,
       defaultValue: type.UUIDV4,
@@ -20,6 +20,8 @@ const UserModel = (sequelize, type) => sequelize.define('User', {
     },
     resetPasswordToken: type.STRING,
     resetPasswordExpires: type.DATE,
+    verifyProfileToken: type.STRING,
+    verificationTokenExpires: type.DATE,
     otpToken: type.STRING,
     otpExpires: type.DATE,
     status: {

@@ -14,7 +14,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as JWTstrategy, ExtractJwt as ExtractJWT } from 'passport-jwt';
 import { User } from '../sequelize.js';
-
+import { sendVerficationLink } from '../utils/sendVerificationLinkUtil.js';
 import { validateUsername, validatePassword } from '../utils/helperUtil.js';
 
 passport.use(
@@ -54,6 +54,7 @@ passport.use(
               email: req.body.email,
             }).then(user => {
               console.log('user created');
+              sendVerficationLink(username);
               return done(null, user);
             });
           });
@@ -86,6 +87,13 @@ passport.use(
         }).then(user => {
           if (user === null) {
             return done(null, false, { message: 'bad username' });
+          }
+          if(user.status === 'blocked'){
+            return done(null, false, { message: 'user blocked' });
+          }
+          if(user.status === 'unverified'){
+            sendVerficationLink(user.username);
+            return done(null, false, { message: 'user unverified' });
           }
           bcrypt.compare(password, user.password).then(response => {
             if (response !== true) {
@@ -135,7 +143,7 @@ passport.use(
     try {
       User.findOne({
         where: {
-          id: jwt_payload.id,
+          userId: jwt_payload.id,
           status: 'verified',
         },
       }).then(user => {

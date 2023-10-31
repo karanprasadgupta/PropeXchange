@@ -24,7 +24,7 @@ export default (app) => {
               username: req.body.username,
             },
           }).then(user => {
-            const token = jwt.sign({ id: user.id }, jwtSecret, {
+            const token = jwt.sign({ id: user.userId }, jwtSecret, {
               expiresIn: 60 * 60,
             });
             res.status(200).send({

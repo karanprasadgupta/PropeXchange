@@ -17,9 +17,8 @@ export default (app) => {
             }).then((userInfo) => {
             if (userInfo != null) {
                 console.log('user found in db');
-                console.log("this2");
                 property.create({
-                    userid:userInfo.id,
+                    userId:userInfo.userId,
                     apartment:req.body.apartment,
                     apartmentname:req.body.apartmentname,
                     bhk:req.body.bhk,

@@ -242,7 +242,7 @@ class Register extends Component {
       return (
         <div>
           <HeaderBar title={title} />
-          <h3>User successfully registered!</h3>
+          <h3>User successfully registered! Please Check Your email To verify your Profile.</h3>
           <LinkButtons
             buttonText="Go Login"
             buttonStyle={loginButton}

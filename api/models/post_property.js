@@ -1,7 +1,4 @@
 const PropertyModel = (sequelize, type) => sequelize.define('Property', {
-    userid:{
-        type:type.INTEGER
-    },
     id: {
         type: type.INTEGER,
         primaryKey: true,
