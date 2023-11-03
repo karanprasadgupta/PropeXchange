@@ -17,9 +17,15 @@ export default (app) => {
             }).then((userInfo) => {
             if (userInfo != null) {
                 console.log('user found in db');
+                console.log(req.body.imagefile);
                 property.create({
                     userId:userInfo.userId,
+                    state:req.body.state,
+                    address:req.body.address,
+                    pincode:req.body.pincode,
+                    district:req.body.district,
                     apartment:req.body.apartment,
+                    imagefile:req.body.imagefile,
                     apartmentname:req.body.apartmentname,
                     bhk:req.body.bhk,
                     floor:req.body.floor,

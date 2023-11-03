@@ -88,6 +88,8 @@ import findUsersRoute from './routes/findUsers.js';
 import deleteUserRoute from './routes/deleteUser.js';
 import updateUserRoute from './routes/updateUser.js';
 import postPropertyRoute from './routes/postProperty.js';
+import bookeditems from './routes/bookeditems.js';
+import deleteproperty from './routes/deleteproperty.js';
 
 loginUserRoute(app);
 registerUserRoute(app);
@@ -99,7 +101,8 @@ findUsersRoute(app);
 deleteUserRoute(app);
 updateUserRoute(app);
 postPropertyRoute(app);
-
+bookeditems(app);
+deleteproperty(app);
 
 app.get('/', function (req, res) {
   res.send('Server Running!!!');

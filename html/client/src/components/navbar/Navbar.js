@@ -90,6 +90,9 @@ function Navbar() {
             </div>
             <div>
                 <button className='btn1 btn'>
+                    <Link to={`/${username}/myproperties`}>My Properties</Link> 
+                </button>
+                <button className='btn1 btn'>
                     <Link to={`/${username}/bookings`}>My Bookings</Link> 
                 </button>
                 <button className='btn2 btn'>

@@ -29,4 +29,4 @@ sequelize.sync().then(()=>{
 User.hasMany(Property,{foreignKey:'userId'});
 console.log("user",User);
 
-export { User, Property };
+export { User, Property ,sequelize};

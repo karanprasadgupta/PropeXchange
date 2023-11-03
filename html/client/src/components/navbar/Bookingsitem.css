@@ -1,0 +1,41 @@
+.mm1{
+    background-color: rgb(223, 226, 228);
+    width: 18cm;
+    height: 6cm;
+    border-radius: 5px;
+    display: flex;
+    margin-left: calc((100vw - 18cm)/2);
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.mm111{
+    display: flex;
+    margin-top: 0.5cm;
+    justify-content: space-evenly;
+}
+.mm111>p{
+    margin-left: 0.4cm;
+}
+.ex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 1cm;
+    border-left: 1px solid rgb(119, 115, 115);
+}
+.harshrit{
+    margin-bottom: 1cm;
+
+}
+.harshrit>button{
+    background-color: red;
+    color: white;
+    border: none;
+    height: 1cm;
+    width: 8cm;
+}
+.harshrit>button:hover{
+    background-color: rgb(216, 111, 111);
+    cursor: pointer;
+}

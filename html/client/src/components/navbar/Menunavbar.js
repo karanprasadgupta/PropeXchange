@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router';
         </div>
         <div className="uu1">Rental Agreemenet</div>
         <div className="uu1">Rent Receipts</div>
-        <div className="uu1">Rent Reciepts</div>
+        <div className="uu1">reviews</div>
         <div className="uu1">
             <p>Contact Us!!</p>
             <p>harsh20434@iiitd.ac.in</p>

@@ -10,7 +10,19 @@
 .ee1>input{
     text-align: center;
 }
-#apartment,#bhk{
+.riti{
+    display: flex;
+    justify-content:center;
+    margin-top:1cm;
+}
+.riti>div{
+    margin-left: 1cm;
+    margin-bottom: 1cm;
+}
+.reee>input{
+    width: 60%;
+}
+#apartment,#bhk,#state{
     text-align: center;
     border-radius: 2cm;
     margin-bottom: 0.5cm;

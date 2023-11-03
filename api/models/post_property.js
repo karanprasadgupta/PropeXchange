@@ -4,6 +4,11 @@ const PropertyModel = (sequelize, type) => sequelize.define('Property', {
         primaryKey: true,
         autoIncrement: true,
         },
+        imagefile:type.BLOB('long'),
+        state:type.STRING,
+        address:type.STRING,
+        pincode:type.INTEGER,
+        district:type.STRING,
         apartment: type.STRING,
         apartmentname:type.STRING,
         bhk: type.STRING,
@@ -17,7 +22,7 @@ const PropertyModel = (sequelize, type) => sequelize.define('Property', {
         expectedDepost: {
         type: type.INTEGER,
         allowNull: false},
-        date:type.DATE
+        date:type.DATEONLY 
 });
 
 export default PropertyModel;

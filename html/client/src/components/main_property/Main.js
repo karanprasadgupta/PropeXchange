@@ -61,12 +61,12 @@ function Main() {
 
     if (isLoading) {
         return (
-          <div>
+        <div>
             <HeaderBar title={title} />
             <div style={loading}>Loading Data...</div>
-          </div>
+        </div>
         );
-      }
+    }
     if(error===false){
     return (
         <>
@@ -101,8 +101,8 @@ function Main() {
                 <label htmlFor="rent">
                     <select name="rent" id="rent">
                         <option value="Type Home">Type of Home?</option>
-                        <option value="Full House">Full House</option>
-                        <option value="Pg/Hostel">PG/Hostel</option>
+                        <option value="Full House">Apartment</option>
+                        <option value="Pg/Hostel">Independent house</option>
                         <option value="Flatmates">Flatmates</option>
                     </select>
                 </label>
@@ -136,17 +136,17 @@ function Main() {
     )}
     return (
         <div>
-          <HeaderBar title={title} />
-          <div style={loading}>Problem fetching user data. Please login again.</div>
-          <Navigate to={`/login`}/>
+        <HeaderBar title={title} />
+        <div style={loading}>Problem fetching user data. Please login again.</div>
+        <Navigate to={`/login`}/>
         </div>
-      );
+    );
 }
 
 Main.propTypes = {
     // eslint-disable-next-line react/require-default-props
     params: PropTypes.shape({
-      username: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired,
     }),
 };
 

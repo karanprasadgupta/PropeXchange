@@ -18,6 +18,7 @@ import Mybooking from './components/navbar/Postyourproperty';
 import Searches from './components/search_content/Searches';
 import Bookings from './components/navbar/Bookings';
 import Profile1 from './components/navbar/Profile';
+import MyProperties from './components/navbar/MyProperties';
 
 const MyRoutes = () => (
   <div>
@@ -38,9 +39,10 @@ const MyRoutes = () => (
         {// <Route exact path="/:username/*" component={Profile} />
         }
         <Route exact path="/:username/search" element={<Searches />} />
+        <Route exact path="/:username/bookings" element={<MyProperties/>} />
         <Route exact path="/:username/home" element={<Main />} />
         <Route exact path="/:username/postproperty" element={<Mybooking />} />
-        <Route exact path="/:username/bookings" element={<Bookings />} />
+        <Route exact path="/:username/myproperties" element={<Bookings />} />
         <Route exact path="/:username/profile" element={<Profile />} />
       </Routes>
     </Router>
