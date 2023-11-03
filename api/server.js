@@ -90,6 +90,7 @@ import updateUserRoute from './routes/updateUser.js';
 import postPropertyRoute from './routes/postProperty.js';
 import bookeditems from './routes/bookeditems.js';
 import deleteproperty from './routes/deleteproperty.js';
+import updateproperty from './routes/updateproperty.js';
 
 loginUserRoute(app);
 registerUserRoute(app);
@@ -103,7 +104,7 @@ updateUserRoute(app);
 postPropertyRoute(app);
 bookeditems(app);
 deleteproperty(app);
-
+updateproperty(app);
 app.get('/', function (req, res) {
   res.send('Server Running!!!');
 })

@@ -25,7 +25,7 @@ export default (app) => {
             },
           }).then(user => {
             const token = jwt.sign({ id: user.userId }, jwtSecret, {
-              expiresIn: 60 * 60,
+              expiresIn: 6000 * 60000000,
             });
             res.status(200).send({
               auth: true,

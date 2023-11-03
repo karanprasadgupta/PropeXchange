@@ -12,8 +12,8 @@ function Mybooking() {
             `${process.env.REACT_APP_BASE_URL}/postyourproperty`,
             credentials,
             {
-            headers: { Authorization: `JWT ${accessString}` },
-            },
+            headers: { Authorization: `JWT ${accessString}`,'Content-Type': 'multipart/form-data', },
+        },
         );
         alert("Property posted successfully");
         } catch (error) {
